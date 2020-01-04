@@ -32,9 +32,9 @@
                       Clientes
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="clientes/novo">Cadastro</a>
+                          <a class="dropdown-item" href="<?php echo URLROOT;?>/clientes/novo">Cadastro</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="clientes/consulta">Consulta</a>
+                          <a class="dropdown-item" href="<?php echo URLROOT;?>/clientes/consulta">Consulta</a>
                       </div>
                   </li>
                   <li class="nav-item">
