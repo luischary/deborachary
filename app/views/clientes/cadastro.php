@@ -1,7 +1,7 @@
 <?php include APPROOT . '/views/inc/header.php'; ?>
 
     <div class="wrapper-formulario-cadastro mx-lg-5">
-        <form class="formulario-cadastro" method="post" target="<?php echo URLROOT; ?>/clientes/cadastro">
+        <form class="formulario-cadastro" method="post" action="<?php echo URLROOT; ?>/clientes/cadastro">
             <div class="row">
                 <div class="col-12 text-center">
                     <h2 class="display-5">Novo Cliente</h2>
@@ -80,13 +80,13 @@
                             <div class="col-auto"></div>
                             <div class="col-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sexo-feminino" id="sexoFeminino" value="feminino" checked />
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoFeminino" value="feminino" checked />
                                     <label for="sexoFeminino">Feminino</label>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="masculino" id="sexoMasculino" value="masculino" />
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="masculino" />
                                     <label for="sexoMasculino">Masculino</label>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                         <input class="form-control" type="text" name="rua" required placeholder="Rua" />
                     </div>
                     <div class="col-sm-12 col-md-6 my-2">
-                        <input class="form-control" type="text" name="numero-rua" required placeholder="Número" />
+                        <input class="form-control" type="number" name="numero-rua" required placeholder="Número" />
                     </div>
                 </div>
                 <div class="row">
@@ -131,7 +131,7 @@
                         <input class="form-control" type="text" name="bairro" placeholder="Bairro" />
                     </div>
                     <div class="col-sm-12 col-md-6 my-2">
-                        <input class="form-control" type="number" name="cidade" required placeholder="Cidade" />
+                        <input class="form-control" type="text" name="cidade" required placeholder="Cidade" />
                     </div>
                 </div>
             </div>
@@ -157,7 +157,7 @@
                         <input class="form-control" type="text" name="instagram" placeholder="Instagram" />
                     </div>
                     <div class="col-sm-12 col-md-6 my-2">
-                        <input class="form-control" type="number" name="facebook" required placeholder="Facebook" />
+                        <input class="form-control" type="text" name="facebook" required placeholder="Facebook" />
                     </div>
                 </div>
             </div>

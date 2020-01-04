@@ -29,13 +29,16 @@
         'end_facebook' => $_POST['facebook'],
       ];
 
+
       $this->mModel = $this->model('Cliente');
       $resposta = $this->mModel->adicionaCliente($data);
 
       if($resposta){
         //deu bom
+        header('Location: ' . URLROOT);
       }else{
         //deu ruim
+        die('Não foi possível cadastrar novo cliente');
       }
     }
 
