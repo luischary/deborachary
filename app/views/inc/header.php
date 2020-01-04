@@ -14,7 +14,7 @@
   <!-- NAV BAR-->
   <div>
       <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-          <a class="navbar-brand" href="#">Débora Chary</a>
+          <a class="navbar-brand" href="<?php echo URLROOT; ?>">Débora Chary</a>
           <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
@@ -22,7 +22,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                      <a class="nav-link item-ativo" href="#">Início</a>
+                      <a class="nav-link item-ativo" href="<?php echo URLROOT; ?>">Início</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link disabled" href="#">Agenda</a>
@@ -34,7 +34,7 @@
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="clientes/novo">Cadastro</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Consulta</a>
+                          <a class="dropdown-item" href="clientes/consulta">Consulta</a>
                       </div>
                   </li>
                   <li class="nav-item">
