@@ -6,6 +6,21 @@
 
     }
 
+    //abre a pagina de detalhes do cliente sendo possível atualizar os dados se quiser
+    public function detalhes($cpf){
+      $this->mModel = $this->model('Cliente');
+      //primeiro pesquisa o cliente por cpf
+      $cliente = $this->mModel->pesquisaPorCpf($cpf);
+
+      if(is_null($cliente) || $cliente == false){
+        //deu ruim
+        header('Location: ' . URLROOT);
+      }else{
+        //encontrou o cliente
+        $this->view('clientes/detalhes', $cliente);
+      }
+    }
+
     //vai disponibilizar uma lista com todos os clientes e informações básicas
     public function consulta(){
       $pesquisa = '';

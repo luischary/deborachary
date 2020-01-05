@@ -9,6 +9,18 @@
       $this->db = new Database();
     }
 
+    //pesquisa o cliente por CPF
+    public function pesquisaPorCpf($cpf){
+      $query = 'SELECT * FROM clientes WHERE cpf=:cpf';
+      $this->db->query($query);
+
+      //bind
+      $this->db->bind(':cpf', $cpf);
+
+      $resposta = $this->db->single();
+      return $resposta;
+    }
+
     //pesquisa o cliente pelo nome
     public function pesquisaCliente($pesquisa){
       $query = 'SELECT * FROM clientes WHERE LOWER(nome) LIKE :pesquisa';
