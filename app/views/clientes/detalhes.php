@@ -27,7 +27,7 @@
 
                 <div class="row">
                     <div class="col-sm-12 col-md-6 my-2">
-                        <input class="form-control" type="number" name="cpf" required placeholder="CPF" value='<?php echo $data->cpf;?>'/>
+                        <input class="form-control" type="number" name="cpf" required placeholder="CPF" value='<?php echo $data->cpf;?>' readonly/>
                     </div>
                     <div class="col-sm-12 col-md-3 my-2">
                         <input class="form-control" type="number" name="peso" required placeholder="Peso" value='<?php echo $data->peso;?>'/>
@@ -45,7 +45,7 @@
                     <div class="col-sm-12 col-md-6 my-2">
                         <div class="form-group">
                             <label for="inputNascimento">Data de Nascimento</label>
-                            <input class="form-control" type="date" name="data-nascimento" required id="inputNascimento" value='<?php echo $data->data_nascimento;?>'/>
+                            <input class="form-control" type="date" name="data-nascimento" required id="inputNascimento" value='<?php echo $data->data_nascimento;?>' readonly/>
                         </div>
                     </div>
                 </div>
@@ -57,13 +57,13 @@
                             <div class="col-auto"></div>
                             <div class="col-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sexo" id="sexoFeminino" value="feminino" <?php echo($data->sexo == 'feminino'?checked:''); ?> />
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoFeminino" value="feminino" <?php echo($data->sexo == 'feminino'?'checked':''); ?> />
                                     <label for="sexoFeminino">Feminino</label>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="masculino" <?php echo($data->sexo == 'masculino'? checked:''); ?>/>
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="masculino" <?php echo($data->sexo == 'masculino'? 'checked':''); ?>/>
                                     <label for="sexoMasculino">Masculino</label>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 my-2">
+                    <div class="col-sm-12 col-md-6 my-2">Readonly inpu
                         <input class="form-control" type="text" name="bairro" placeholder="Bairro" value='<?php echo $data->bairro;?>'/>
                     </div>
                     <div class="col-sm-12 col-md-6 my-2">
@@ -143,8 +143,11 @@
 
             <div class="row p-3">
                 <div class="col-3"></div>
-                <div class="col-6">
+                <div class="col-3">
                     <button class='btn btn-outline-secondary btn-block' type="submit"><strong>Alterar</strong></button>
+                </div>
+                <div class='col-3'>
+                  <a href='<?php echo URLROOT;?>/clientes/consulta' class='btn btn-link'>Voltar</a>
                 </div>
                 <div class="col-3"></div>
             </div>
