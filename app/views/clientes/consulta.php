@@ -5,7 +5,7 @@
     <div class='col-3'>
     </div>
     <div class='col-6'>
-      <form class='form-inline'>
+      <form class='form-inline' action="<?php echo URLROOT;?>/clientes/consulta" method="post">
         <input type='text' name='pesquisa' placeholder="Pesquisar pelo nome" class='form-control'>
         <button type='submit' class='btn btn-primary float-right'>Pesquisar</button>
       </form>

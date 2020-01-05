@@ -7,8 +7,13 @@
     }
 
     //vai disponibilizar uma lista com todos os clientes e informações básicas
-    public function consulta($pesquisa = ''){
-      $data = [];
+    public function consulta(){
+      $pesquisa = '';
+      //verifica se recebeu o parametro de pesquisa
+      if(isset($_POST['pesquisa'])){
+        $pesquisa = $_POST['pesquisa'];
+      }
+
       $this->mModel = $this->model('Cliente');
 
       if($pesquisa == ''){
@@ -16,7 +21,7 @@
         $data = $this->mModel->pegaClientes();
       }else{
         //pesquisa só pelo nome que passou
-        $data = $this->pesquisaClientes($pesquisa);
+        $data = $this->mModel->pesquisaCliente($pesquisa);
       }
 
       //agora passa para a view
