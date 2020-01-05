@@ -32,7 +32,14 @@
                 <p class='card-text'><?php echo $cliente->cidade;?></p>
               </div>
             </div>
-            <a href='<?php echo URLROOT;?>/clientes/detalhes/<?php echo $cliente->cpf;?>' class='card-link'>Detalhes</a>
+            <div class='row mt-2'>
+              <div class='col-6'>
+                <a href='<?php echo URLROOT;?>/clientes/detalhes/<?php echo $cliente->cpf;?>' class='card-link'>Detalhes</a>
+              </div>
+              <div class='col-6 text-right'>
+                <a href='<?php echo URLROOT;?>/clientes/apagar/<?php echo $cliente->cpf;?>' class='btn btn-outline-danger btn-sm'>Apagar</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

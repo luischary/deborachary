@@ -9,6 +9,19 @@
       $this->db = new Database();
     }
 
+    //apaga o cliente dado o cpf
+    public function deletaClientePorCpf($cpf){
+        $query = 'DELETE FROM clientes WHERE cpf=:cpf';
+        $this->db->query($query);
+
+        //binde
+        $this->db->bind(':cpf', $cpf);
+
+        //vai
+        $resposta = $this->db->execute();
+        return $resposta;
+    }
+
     //pesquisa o cliente por CPF
     public function pesquisaPorCpf($cpf){
       $query = 'SELECT * FROM clientes WHERE cpf=:cpf';
@@ -38,7 +51,7 @@
     }
     //retorna um array de objetos clientes
     public function pegaClientes(){
-      $query = 'SELECT * from clientes ORDER BY nome DESC';
+      $query = 'SELECT * from clientes ORDER BY nome ASC';
 
       $this->db->query($query);
 

@@ -6,6 +6,21 @@
 
     }
 
+    //deleta o cliente do banco de dados
+    public function apagar($cpf){
+      $this->mModel = $this->model('Cliente');
+
+      $resposta = $this->mModel->deletaClientePorCpf($cpf);
+      if($resposta){
+        //deu bom
+        header('Location: ' . URLROOT . '/clientes/consulta');
+      }else{
+        die('Não foi possível apagar o cliente');
+      }
+
+    }
+
+
     public function atualiza(){
       $data = Cliente::pegaDadosFormulario();
 
