@@ -17,6 +17,10 @@ section {
     font-family: 'Lato', sans-serif;
 }
 
+body{
+  padding-top: 4.5%;
+}
+
 
 /* -----------capa --------------*/
 
@@ -101,8 +105,8 @@ nav .dropdown-menu .dropdown-item {
 }
 
 .card {
-    background-color: var(--color-secondary-dark);
-    color: var(--color-primary-light);
+    background-color: var(--color-primary-light);
+    color: var(--color-secondary-dark);
 }
 
 .card i {

@@ -9,6 +9,31 @@
       $this->db = new Database();
     }
 
+    //pesquisa o cliente pelo nome
+    public function pesquisaCliente($pesquisa){
+      $query = 'SELECT * FROM clientes WHERE LOWER(nome) LIKE :pesquisa';
+      $this->db->query($query);
+
+      //trata a pesquisa fazendo ser lower case
+      $pesquisa = strtolower($pesquisa);
+      //concatena os caracteres para fazer o like no sql (pesquisa os termos em qualquer posicao)
+      $pesquisa = '%' . $pesquisa . '%';
+      //faz o bind
+      $this->db->bind(':pesquisa', $pesquisa);
+      //faz a consulta
+      $resposta = $this->db->resultSet();
+      return $resposta;
+    }
+    //retorna um array de objetos clientes
+    public function pegaClientes(){
+      $query = 'SELECT * from clientes ORDER BY nome DESC';
+
+      $this->db->query($query);
+
+      $resultado = $this->db->resultSet();
+      return $resultado;
+    }
+
     public function adicionaCliente($data){
       $query = 'INSERT INTO clientes (nome, sobrenome, cpf, peso, altura, ocupacao, data_nascimento, sexo, obs, rua, endereco_numero, endereco_comp, cep, bairro, cidade,' .
                 'num_celular, email, end_instagram, end_facebook) VALUES (:nome, :sobrenome, :cpf, :peso, :altura, :ocupacao, :data_nascimento, :sexo, :obs, :rua, ' .
