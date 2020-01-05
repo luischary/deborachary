@@ -40,30 +40,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-6 my-2">
                         <label for="selecionaProfissao">Area de Ocupação</label>
-                        <select class="form-control" name='ocupacao'>
-                          <option selected>Selecione uma</option>
-                          <option value="Sem ocupacao">Sem ocupação</option>
-                          <option value="Alimentos">Alimentos</option>
-                          <option value="Arquitetura">Arquitetura</option>
-                          <option value="Bancos">Bancos</option>
-                          <option value="Constucao civil">Construção civil</option>
-                          <option value="Design">Design</option>
-                          <option value="Estetica">Estetica</option>
-                          <option value="Estudante">Estudante</option>
-                          <option value="Fabricas e Manufatura">Fábricas e Manufatura</option>
-                          <option value="Financas">Finanças</option>
-                          <option value="Juridico">Jurídico</option>
-                          <option value="Marketing">Marketing</option>
-                          <option value="Medicina">Medicina</option>
-                          <option value="Moda">Moda</option>
-                          <option value="Oficina ou Mecanica">Oficina ou Mecânica</option>
-                          <option value="Profissional Autonomo">Profissional Autônomo</option>
-                          <option value="Profissional de TI">Profissional de TI</option>
-                          <option value="Publicidade e Propaganda">Publicidade e Propaganda</option>
-                          <option value="Saude">Saude</option>
-                          <option value="Setor Administrativo">Setor Administrativo</option>
-                          <option value="Transportes">Transportes</option>
-                          </select>
+                        <?php echo geraSelectOcupacao("Selecione Uma"); ?>
                     </div>
                     <div class="col-sm-12 col-md-6 my-2">
                         <div class="form-group">

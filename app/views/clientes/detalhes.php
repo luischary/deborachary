@@ -57,13 +57,13 @@
                             <div class="col-auto"></div>
                             <div class="col-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sexo" id="sexoFeminino" value="feminino" checked />
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoFeminino" value="feminino" <?php echo($data->sexo == 'feminino'?checked:''); ?> />
                                     <label for="sexoFeminino">Feminino</label>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="masculino" />
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="masculino" <?php echo($data->sexo == 'masculino'? checked:''); ?>/>
                                     <label for="sexoMasculino">Masculino</label>
                                 </div>
                             </div>
