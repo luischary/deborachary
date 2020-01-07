@@ -31,7 +31,7 @@
             <div class='card text-center pt-2'>
                 <i class='fas fa-users fa-5x'></i>
                 <h3>Informações pessoais</h3>
-                <a class='btn btn-secondary' href="#">Clientes</a>
+                <a class='btn btn-secondary' href="<?php echo URLROOT;?>/clientes/consulta">Clientes</a>
             </div>
         </div>
 

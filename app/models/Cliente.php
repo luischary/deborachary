@@ -9,6 +9,16 @@
       $this->db = new Database();
     }
 
+    //pesquisa se ja existe o cpf cadastrado
+    public function cpfCadastrado($cpf){
+      $query = "SELECT * FROM clientes WHERE cpf=:cpf";
+      $this->db->query($query);
+
+      $this->db->bind(':cpf', $cpf);
+
+      return $this->db->rowCount() > 0? true:false;
+    }
+    
     //apaga o cliente dado o cpf
     public function deletaClientePorCpf($cpf){
         $query = 'DELETE FROM clientes WHERE cpf=:cpf';

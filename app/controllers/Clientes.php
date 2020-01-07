@@ -3,13 +3,11 @@
   class Clientes extends Controller{
 
     public function __construct(){
-
+      $this->mModel = $this->model('Cliente');
     }
 
     //deleta o cliente do banco de dados
     public function apagar($cpf){
-      $this->mModel = $this->model('Cliente');
-
       $resposta = $this->mModel->deletaClientePorCpf($cpf);
       if($resposta){
         //deu bom
@@ -21,11 +19,24 @@
     }
 
 
-    public function atualiza(){
+    public function atualiza($cpf){
       $data = Cliente::pegaDadosFormulario();
+      //valida os dados pra ver se está tudo certo
+      $valida = $this->validaDadosFormularioCliente($data);
+      if(count($valida) == 0){
+        //não teve nenhum erro
+        $resposta = $this->mModel->atualizaCliente($data);
+      }else{
+        //temos erros no preenchimento
+        //registra as mensagens
+        $mensagemFinal = '';
+        foreach($valida as $mensagem){
+          registrarMensagem($mensagem);
+        }
+        //retorna na pagina para o usuario
+        $this->view('clientes/detalhes/' . $cpf, $data);
+      }
 
-      $this->mModel = $this->model('Cliente');
-      $resposta = $this->mModel->atualizaCliente($data);
 
       if($resposta){
         //deu bom
@@ -38,7 +49,6 @@
 
     //abre a pagina de detalhes do cliente sendo possível atualizar os dados se quiser
     public function detalhes($cpf){
-      $this->mModel = $this->model('Cliente');
       //primeiro pesquisa o cliente por cpf
       $cliente = $this->mModel->pesquisaPorCpf($cpf);
 
@@ -59,8 +69,6 @@
         $pesquisa = $_POST['pesquisa'];
       }
 
-      $this->mModel = $this->model('Cliente');
-
       if($pesquisa == ''){
         //precisa pegar todos os clientes no banco de DADOS
         $data = $this->mModel->pegaClientes();
@@ -77,8 +85,6 @@
     public function cadastro(){
       $data = Cliente::pegaDadosFormulario();
 
-
-      $this->mModel = $this->model('Cliente');
       $resposta = $this->mModel->adicionaCliente($data);
 
       if($resposta){
@@ -94,5 +100,21 @@
       $data = [];
 
       $this->view('clientes/cadastro', $data);
+    }
+
+    //recebe todos os dadlos do formulario do cliente e valida os campos que precisam de validacao
+    public function validaDadosFormularioCliente($data){
+      $respostas = array();
+      //valida cpf
+      if($this->mModel->cpfCadastrado($data['cpf'])){
+        array_push($respostas, 'Este cpf já foi cadastrado');
+      }
+
+      //email
+      if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+        array_push($respostas, 'Email inserido não é um email válido');
+      }
+
+      return $respostas;
     }
   }

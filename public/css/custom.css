@@ -110,7 +110,7 @@ nav .dropdown-menu .dropdown-item {
 }
 
 .card i {
-    color: var(--color-primary-light);
+    color: var(--color-secondary-dark);
     margin: 1rem 0 2rem 0;
 }
 

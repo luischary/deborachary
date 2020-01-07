@@ -24,9 +24,10 @@
         <div class='card'>
           <div class='card-body'>
             <h5 class='card-title'><?php echo($cliente->nome . ' ' . $cliente->sobrenome);?></h5>
+            <p class='card-text'><?php echo $cliente->num_celular;?></p>
             <div class='row'>
               <div class='col-6'>
-                <p class='card-text'><?php echo $cliente->num_celular;?></p>
+                <p class='card-text'><?php echo $cliente->email;?></p>
               </div>
               <div class='col-6 text-right'>
                 <p class='card-text'><?php echo $cliente->cidade;?></p>

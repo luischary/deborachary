@@ -4,6 +4,7 @@ require_once 'config/config.php';
 
 //carrega o helper de componentes da aplicacao
 require_once 'helpers/componentes.php';
+require_once 'helpers/mensagem.php';
 
 //carregando os models
 require_once 'models/Cliente.php';
