@@ -11,6 +11,7 @@
       $resposta = $this->mModel->deletaClientePorCpf($cpf);
       if($resposta){
         //deu bom
+        Mensageiro::registrarMensagemBoa('Cliente apagado!');
         header('Location: ' . URLROOT . '/clientes/consulta');
       }else{
         die('Não foi possível apagar o cliente');
@@ -19,32 +20,29 @@
     }
 
 
-    public function atualiza($cpf){
+    public function atualiza(){
       $data = Cliente::pegaDadosFormulario();
       //valida os dados pra ver se está tudo certo
       $valida = $this->validaDadosFormularioCliente($data);
-      if(count($valida) == 0){
+      if($valida != ''){
         //não teve nenhum erro
         $resposta = $this->mModel->atualizaCliente($data);
+        if($resposta){
+          //deu bom
+          Mensageiro::registrarMensagemBoa('Dados atualizados com sucesso!');
+          header('Location: ' . URLROOT . '/clientes/consulta');
+        }else{
+          //deu ruim
+          die('Não foi possível atualizar dados do cliente');
+        }
       }else{
         //temos erros no preenchimento
         //registra as mensagens
-        $mensagemFinal = '';
-        foreach($valida as $mensagem){
-          registrarMensagem($mensagem);
-        }
+        Mensageiro::registrarMensagemRuim($valida);
         //retorna na pagina para o usuario
         $this->view('clientes/detalhes/' . $cpf, $data);
       }
 
-
-      if($resposta){
-        //deu bom
-        header('Location: ' . URLROOT . '/clientes/consulta');
-      }else{
-        //deu ruim
-        die('Não foi possível atualizar dados do cliente');
-      }
     }
 
     //abre a pagina de detalhes do cliente sendo possível atualizar os dados se quiser
@@ -85,15 +83,29 @@
     public function cadastro(){
       $data = Cliente::pegaDadosFormulario();
 
-      $resposta = $this->mModel->adicionaCliente($data);
+      $mensagensValida = $this->validaDadosFormularioCliente($data);
+      if($mensagensValida != ''){
+        //significa que tem mensagens de erro para mostrar para o cliente
+        Mensageiro::registraMensagemRuim($mensagensValida);
 
-      if($resposta){
-        //deu bom
-        header('Location: ' . URLROOT . '/clientes/consulta');
+        //redireciona o cara para o cadastro novamente
+        $this->view('clientes/cadastro', $data);
       }else{
-        //deu ruim
-        die('Não foi possível cadastrar novo cliente');
+        //tudo certinho, vamos cadastrar o cliente novo
+        $resposta = $this->mModel->adicionaCliente($data);
+
+        if($resposta){
+          //deu bom
+          //mensagem que deu certinho
+          Mensageiro::registrarMensagemBoa("Usuário cadastrado com sucesso!");
+          header('Location: ' . URLROOT . '/clientes/consulta');
+        }else{
+          //deu ruim
+          die('Não foi possível cadastrar novo cliente');
+        }
+
       }
+
     }
 
     public function novo(){
@@ -104,17 +116,18 @@
 
     //recebe todos os dadlos do formulario do cliente e valida os campos que precisam de validacao
     public function validaDadosFormularioCliente($data){
-      $respostas = array();
+      //retorna uma única string com as mensagens de erro
+      $resposta = '';
       //valida cpf
       if($this->mModel->cpfCadastrado($data['cpf'])){
-        array_push($respostas, 'Este cpf já foi cadastrado');
+        $resposta = $resposta . 'Este cpf já foi cadastrado';
       }
 
       //email
       if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
-        array_push($respostas, 'Email inserido não é um email válido');
+        $resposta = $resposta . '</br>' . 'Email inserido não é um email válido';
       }
 
-      return $respostas;
+      return $resposta;
     }
   }

@@ -1,4 +1,9 @@
 <?php
+//inicia a sessão se não tiver iniciado
+if(session_status() == PHP_SESSION_NONE){
+  session_start();
+}
+
 //load config
 require_once 'config/config.php';
 

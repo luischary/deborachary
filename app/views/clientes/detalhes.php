@@ -134,7 +134,7 @@
                         <input class="form-control" type="text" name="instagram" placeholder="Instagram" value='<?php echo $data->end_instagram;?>'/>
                     </div>
                     <div class="col-sm-12 col-md-6 my-2">
-                        <input class="form-control" type="text" name="facebook" required placeholder="Facebook" value='<?php echo $data->end_facebook;?>'/>
+                        <input class="form-control" type="text" name="facebook" placeholder="Facebook" value='<?php echo $data->end_facebook;?>'/>
                     </div>
                 </div>
             </div>

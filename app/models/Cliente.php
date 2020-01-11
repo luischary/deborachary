@@ -15,10 +15,15 @@
       $this->db->query($query);
 
       $this->db->bind(':cpf', $cpf);
+      $resposta = $this->db->single();
 
-      return $this->db->rowCount() > 0? true:false;
+      if($resposta == false){
+        return false;
+      }else{
+        return true;
+      }
     }
-    
+
     //apaga o cliente dado o cpf
     public function deletaClientePorCpf($cpf){
         $query = 'DELETE FROM clientes WHERE cpf=:cpf';

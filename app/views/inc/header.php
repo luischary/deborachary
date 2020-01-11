@@ -12,8 +12,8 @@
 <body>
 
   <!-- NAV BAR-->
-  <div>
-      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div id='div-navbar'>
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top mb-5">
           <a class="navbar-brand" href="<?php echo URLROOT; ?>">Débora Chary</a>
           <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -44,3 +44,14 @@
           </div>
       </nav>
   </div>
+
+  <?php
+    //verifica se tem alguma mensagem pra mostrar, se tiver mostra
+    if(Mensageiro::temMensagemBoaParaMostrar()){
+      echo(Mensageiro::mostrarMensagemBoa());
+    }
+
+    if(Mensageiro::temMensagemRuimParaMostrar()){
+      echo(Mensageiro::mostrarMensagemRuim());
+    }
+   ?>
