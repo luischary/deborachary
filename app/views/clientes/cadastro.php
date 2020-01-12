@@ -1,6 +1,6 @@
 <?php include APPROOT . '/views/inc/header.php'; ?>
 
-    <div class="wrapper-formulario-cadastro mx-lg-5">
+    <div class="wrapper-formulario-cadastro mx-lg-5 mb-5">
         <form class="formulario-cadastro" method="post" action="<?php echo URLROOT; ?>/clientes/cadastro">
             <div class="row">
                 <div class="col-12 text-center">

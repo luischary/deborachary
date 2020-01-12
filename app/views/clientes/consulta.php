@@ -5,9 +5,17 @@
     <div class='col-md-2 col-lg-3'>
     </div>
     <div class='col-sm-8 col-lg-6'>
-      <form class='form-inline' action="<?php echo URLROOT;?>/clientes/consulta" method="post">
-        <input type='text' name='pesquisa' placeholder="Pesquisar pelo nome" class='form-control'>
-        <button type='submit' class='btn btn-primary float-right'>Pesquisar</button>
+      <form action="<?php echo URLROOT;?>/clientes/consulta" method="post">
+        <div class='row'>
+          <div class='col-10'>
+            <input type='text' name='pesquisa' placeholder="Pesquisar pelo nome" class='form-control pr-0'>
+          </div>
+          <div class='col-2 pl-0'>
+            <button type='submit' class='btn btn-secondary ml-0'>
+              <i class='fas fa-search'></i>
+            </button>
+          </div>
+        </div>
       </form>
     </div>
     <div class='col-sm-2 col-lg-3'>
@@ -21,7 +29,7 @@
       <div class='col-md-1 col-lg-2'>
       </div>
       <div class='col-md-10 col-lg-8'>
-        <div class='card'>
+        <div class='card shadow'>
           <div class='card-body'>
             <h5 class='card-title'><?php echo($cliente->nome . ' ' . $cliente->sobrenome);?></h5>
             <p class='card-text'><?php echo $cliente->num_celular;?></p>
