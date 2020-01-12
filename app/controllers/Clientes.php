@@ -4,6 +4,9 @@
 
     public function __construct(){
       $this->mModel = $this->model('Cliente');
+
+      //só permite acessar qualquer uma dessas paginas se estiver logado
+      Usuario::validaUsuario();
     }
 
     //deleta o cliente do banco de dados

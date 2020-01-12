@@ -41,8 +41,8 @@
       $mensagemFinal = $_SESSION[Mensageiro::chaveMensagemBoa];
       unset($_SESSION[Mensageiro::chaveMensagemBoa]);
 
-      $retorno = '<div class="container">
-                    <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">' .
+      $retorno = '<div class="container py-0" id="mensagem-mensageiro">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">' .
                       $mensagemFinal .
                       '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -57,8 +57,8 @@
       $mensagemFinal = $_SESSION[Mensageiro::chaveMensagemRuim];
       unset($_SESSION[Mensageiro::chaveMensagemRuim]);
 
-      $retorno = '<div class="container">
-                    <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">' .
+      $retorno = '<div class="container py-0" id="mensagem-mensageiro">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">' .
                       $mensagemFinal .
                       '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

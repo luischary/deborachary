@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div class='container my-2'>
+<div class='container mt-2 mb-4'>
   <?php foreach($data as $cliente): ?>
     <div class='row my-2'>
       <div class='col-md-1 col-lg-2'>

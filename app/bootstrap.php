@@ -13,6 +13,7 @@ require_once 'helpers/mensagem.php';
 
 //carregando os models
 require_once 'models/Cliente.php';
+require_once 'models/Usuario.php';
 
 //autoloader para a libraries
 spl_autoload_register(function($className){

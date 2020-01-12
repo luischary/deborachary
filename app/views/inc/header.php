@@ -41,7 +41,11 @@
                       <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Nova Sessão</a>
                   </li>
               </ul>
-              <a class='btn btn-secondary' href='#'>Login</a>
+              <?php if(Usuario::temUsuarioLogado() == false){ ?>
+                <a class='btn btn-secondary' href='<?php echo URLROOT;?>/usuarios/login'>Login</a>
+              <?php }else{ ?>
+                <a class='btn btn-secondary' href='<?php echo URLROOT;?>/usuarios/logout'>Logout</a>
+              <?php } ?>
           </div>
       </nav>
   </div>
