@@ -24,21 +24,28 @@
                   <li class="nav-item">
                       <a class="nav-link" href="<?php echo URLROOT; ?>">Início</a>
                   </li>
-                  <li class="nav-item">
-                      <a class="nav-link disabled" href="#">Agenda</a>
-                  </li>
                   <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link dropdown-toggle" href="#" id="navClientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Clientes
                       </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <div class="dropdown-menu" aria-labelledby="navClientes">
                           <a class="dropdown-item" href="<?php echo URLROOT;?>/clientes/novo">Cadastro</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="<?php echo URLROOT;?>/clientes/consulta">Consulta</a>
                       </div>
                   </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navSessoes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sessões
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navSessoes">
+                        <a class="dropdown-item" href="<?php echo URLROOT;?>/sessoes/cadastro">Nova</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo URLROOT;?>/sessoes/consulta">Consulta</a>
+                    </div>
+                  </li>
                   <li class="nav-item">
-                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Nova Sessão</a>
+                      <a class="nav-link disabled" href="#">Financeiro</a>
                   </li>
               </ul>
               <?php if(Usuario::temUsuarioLogado() == false){ ?>
