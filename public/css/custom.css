@@ -29,7 +29,16 @@ body{
   }
 }
 
-
+#mensagem-mensageiro{
+  position:absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 5%;
+  width: 350px;
+  z-index: 2000 !important;
+}
 
 /* -----------capa --------------*/
 
@@ -89,7 +98,7 @@ body{
 }
 
 nav .dropdown-menu {
-    background-color: var(--color-background);
+    background-color: white;
 }
 
 nav .dropdown-menu .dropdown-item {
@@ -167,6 +176,7 @@ nav .dropdown-menu .dropdown-item {
 .formulario-cadastro .btn {
     color: var(--color-secondary-light);
     border: var(--color-secondary-light) solid 2px;
+    font-size: 1.5rem;
 }
 
 .formulario-cadastro .btn:hover {
