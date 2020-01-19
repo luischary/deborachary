@@ -95,7 +95,16 @@
         $this->view('clientes/cadastro', $data);
       }else{
         //tudo certinho, vamos cadastrar o cliente novo
-        $resposta = $this->mModel->adicionaCliente($data);
+        $resposta = $this->mModel->adicionaCliente($data);//primeiro pesquisa o cliente por cpf
+      $cliente = $this->mModel->pesquisaPorCpf($cpf);
+
+      if(is_null($cliente) || $cliente == false){
+        //deu ruim
+        header('Location: ' . URLROOT);
+      }else{
+        //encontrou o cliente
+        $this->view('clientes/detalhes', $cliente);
+      }
 
         if($resposta){
           //deu bom
@@ -132,5 +141,19 @@
       }
 
       return $resposta;
+    }
+
+    //retorna um JSON com as informações do cliente cadastrado com esse cpf
+    public function consultaApi($cpf){
+      //primeiro pesquisa o cliente por cpf
+      $cliente = $this->mModel->pesquisaPorCpf($cpf);
+
+      if(is_null($cliente) || $cliente == false){
+        $a = array();
+        echo json_encode($a);
+      }else{
+        //encontrou o cliente
+        echo json_encode($cliente);
+      }
     }
   }

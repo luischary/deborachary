@@ -1,4 +1,45 @@
 <?php
+
+function geraSelectProdutos(){
+  $obj = new Produtos();
+  $produtos = $obj->getProdutos();
+
+  $textoSelect = "<select id='inputTipoBronze' class='form-control' name='produto'>";
+  $textoSelect = $textoSelect . "<option selected value='0'>Selecione uma opção</option>";
+
+  //agora gera as opcoes dentro do SELECT
+  foreach($produtos as $produto){
+    $opcao = "<option value='" . $produto->nome . "'>" . $produto->nome . "</option>";
+    //adiciona no texto principal
+    $textoSelect = $textoSelect . $opcao;
+  }
+
+  //finaliza fechando a tag select
+
+  $textoSelect = $textoSelect . "</select>";
+  return $textoSelect;
+}
+
+function geraSelectClinicas(){
+  $obj = new Clinicas();
+  $clinicas = $obj->getClinicas();
+
+  $textoSelect = "<select id='inputClinica' class='form-control' name='clinica'>";
+  $textoSelect = $textoSelect . "<option selected value='0'>Selecione uma opção</option>";
+
+  //agora gera as opcoes dentro do SELECT
+  foreach($clinicas as $clinica){
+      $opcao = "<option value='" . $clinica->nome . "'>" . $clinica->nome . "</option>";
+
+    //adiciona no texto principal
+    $textoSelect = $textoSelect . $opcao;
+  }
+
+  //finaliza fechando a tag select
+
+  $textoSelect = $textoSelect . "</select>";
+  return $textoSelect;
+}
 function geraSelectOcupacao($selecionado){
   $ocupacoes = [
     'Selecione uma',

@@ -10,10 +10,13 @@ require_once 'config/config.php';
 //carrega o helper de componentes da aplicacao
 require_once 'helpers/componentes.php';
 require_once 'helpers/mensagem.php';
+require_once 'helpers/Clinicas.php';
+require_once 'helpers/Produtos.php';
 
 //carregando os models
 require_once 'models/Cliente.php';
 require_once 'models/Usuario.php';
+
 
 //autoloader para a libraries
 spl_autoload_register(function($className){
