@@ -59,22 +59,22 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6 my-2">
                   <label for='inputValor'>Valor produto</label>
-                  <input id='inputValor' type="number" name='valor_produto' class='form-control' readonly value='120.00'>
+                  <input id='inputValor' type="number" name='valor_produto' class='form-control' readonly value='0'>
                 </div>
                 <div class="col-sm-12 col-md-6 my-2">
-                  <label for='inputValor'>Comissão Clínica</label>
-                  <input id='inputValor' type="number" name='comissao' class='form-control' readonly value='0.2'>
+                  <label for='inputValorComissao'>Comissão Clínica</label>
+                  <input id='inputValorComissao' type="number" name='comissao' class='form-control' readonly value='0'>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-sm-12 col-md-6 my-2">
-                  <label for='inputValor'>Créditos cliente</label>
-                  <input id='inputValor' type="number" name='creditos_cliente' class='form-control' readonly value='0'>
+                  <label for='inputValorCreditos'>Créditos cliente</label>
+                  <input id='inputValorCreditos' type="number" name='creditos_cliente' class='form-control' readonly value='0'>
                 </div>
                 <div class="col-sm-12 col-md-6 my-2">
-                  <label for='inputValor'>Valor à pagar</label>
-                  <input id='inputValor' type="number" name='valor' class='form-control' readonly value='120.00'>
+                  <label for='inputValorPagamento'>Valor à pagar</label>
+                  <input id='inputValorPagamento' type="number" name='valor' class='form-control' readonly value='0'>
                 </div>
             </div>
 

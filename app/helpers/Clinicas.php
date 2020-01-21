@@ -14,4 +14,13 @@ class Clinicas{
 
     return $this->db->resultSet();
   }
+
+  public function getClinica($nome){
+    $query = "SELECT * FROM clinicas WHERE REPLACE(nome, ' ', '')=:nome";
+    $this->db->query($query);
+
+    $this->db->bind(":nome", $nome);
+
+    return $this->db->single();
+  }
 }
