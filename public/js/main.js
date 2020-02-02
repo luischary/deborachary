@@ -14,6 +14,8 @@ $("#inputTipoBronze").change(tipoBronzeHandler);
 //se escolhe uma clinica precisa atualizar a comissão
 $("#inputClinica").change(clinicaHandler);
 
+//esconde as entradas de descrição do motivo da visita 'outro' e do traje da Festa
+$("#pergunta1").click(checaCamposDescricaoMotivo);
 
 function clienteInvalido(){
   //deu ruim, esse cpf não está cadastrado
@@ -23,7 +25,7 @@ function clienteInvalido(){
   //mostra o link de cadastrar clientes
   $("#linkCadastrarCliente").removeClass('invisible');
   //oculta o botão de Bronzear
-  $("#btnCadastraSessao").addClass('invisible');
+  $("#btnCadastraSessao").addClass('invisible');root
 }
 
 function clienteValido(cliente){
@@ -141,4 +143,26 @@ function cpfClienteHandler(){
       //enquanto não chegou no comprimeto, garante que não tem nada nos campos de nome e observacao
       clienteInvalido();
     }
+}
+
+//funcao que faz aparecer e sumir os campos complementares da pergunta de motivo da visita
+function checaCamposDescricaoMotivo(){
+  let inputTraje = $("#input_traje_festa");
+  let inputOutro = $("#input_descricao_outro");
+
+  if($("#inlineRadio3").is(":checked")){
+    inputTraje.removeAttr('hidden');
+  }else{
+    if(inputTraje.is(':visible')){
+      inputTraje.attr('hidden', true);
+    }
+  }
+
+  if($("#inlineRadio4").is(":checked")){
+    inputOutro.removeAttr("hidden");
+  }else{
+    if(inputOutro.is(':visible')){
+      inputOutro.attr('hidden', true);
+    }
+  }
 }

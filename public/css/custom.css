@@ -183,3 +183,16 @@ nav .dropdown-menu .dropdown-item {
     color: var(--color-primary-light);
     background-color: var(--color-secondary-light);
 }
+
+
+/* ------------------------------------ SESSAO ------------------------------------------------*/
+.wrapper-perguntas1{
+  background-color: var(--color-background);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  height: 100%;
+}
+
+.titulo-pergunta{
+  font-size: 1.2rem;
+}
