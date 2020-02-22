@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
 <div class="wrapper-formulario-cadastro mx-lg-5 mb-5">
-    <form class="formulario-cadastro" method="post" action="<?php echo URLROOT; ?>/clientes/cadastro">
+    <form class="formulario-cadastro" method="post" action="<?php echo URLROOT; ?>/Sessoes/cadastra">
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="display-5">Novo Bronze HD</h2>
@@ -33,17 +33,14 @@
               </div>
               <div class="col-sm-12 col-md-3 my-2">
                 <label for="inputData">Data</label>
-                  <input id="inputData" class="form-control" type="text" name="data" placeholder="Data" disabled
-                  value='<?php echo(isset($data['data'])?$data['data']:'');?>'/>
+                  <input id="inputData" class="form-control" type="text" name="data_atual" placeholder="Data" readonly />
               </div>
               <div class="col-sm-12 col-md-3 my-2">
                 <label for="inputData">Hora</label>
-                  <input id='inputHora' class="form-control" type="text" name="hora" placeholder="Hora" disabled
-                  value='<?php echo(isset($data['hora'])?$data['hora']:'');?>'/>
+                  <input id='inputHora' class="form-control" type="text" name="hora_atual" placeholder="Hora" readonly />
               </div>
             </div>
 
-            <!-- COLOCAR O NOME DA PESSOA PARA PODER CONFIRMAR A IDENTIDADE ASSIM QUE INSERIR O CPF -->
 
             <div class="row">
                 <div class="col-sm-12 col-md-6 my-2">
@@ -81,14 +78,14 @@
             <div class='row'>
               <div class="col-sm-12 col-md-6 my-2">
                 <label for='inputParcelas'>Parcelas</label>
-                <select id='inputParcelas' class='custom-select'>
+                <select id='inputParcelas' class='custom-select' name='quant_parcelas'>
                   <option value='1' selected>1</option>
                   <option value='2'>2</option>
                 </select>
               </div>
               <div class='col-sm-12 col-md-6 my-2'>
                 <label for='inputTipoPag'>Forma de Pagamento</label>
-                <select id='inputTipoPag' class='custom-select'>
+                <select id='inputTipoPag' class='custom-select' name='tipo_pag'>
                   <option value='debito' selected>Débito</option>
                   <option value='credito'>Crédito</option>
                 </select>
@@ -98,7 +95,7 @@
             <div class='row'>
               <div class="col-sm-12 col-md-6 my-2">
                   <label>Obs Sessão</label>
-                  <textarea class='form-control' name='obs'><?php echo(isset($data['obs'])?$data['obs']:'')?></textarea>
+                  <textarea class='form-control' name='obs_sessao'><?php echo(isset($data['obs'])?$data['obs']:'')?></textarea>
               </div>
             </div>
 

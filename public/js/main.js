@@ -1,10 +1,12 @@
 //coloca a data e hora atuais nos campos de data e hora
 var data = new Date();
 var hoje = data.getDate()+'/'+(data.getMonth()+1)+'/'+data.getFullYear();
-$("#inputData").val(hoje);
+// $("#inputData").val(hoje);
+document.getElementById("inputData").setAttribute('value', hoje);
 
 var hora = data.getHours()+':'+data.getMinutes();
-$("#inputHora").val(hora);
+// $("#inputHora").val(hora);
+document.getElementById("inputHora").setAttribute('value', hora);
 
 $("#cpfCliente").change(cpfClienteHandler);
 
