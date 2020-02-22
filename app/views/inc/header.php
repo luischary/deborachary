@@ -39,7 +39,7 @@
                     Sessões
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navSessoes">
-                        <a class="dropdown-item" href="<?php echo URLROOT;?>/sessoes/cadastro">Nova</a>
+                        <a class="dropdown-item" href="<?php echo URLROOT;?>/sessoes/nova">Nova</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?php echo URLROOT;?>/sessoes/consulta">Consulta</a>
                     </div>

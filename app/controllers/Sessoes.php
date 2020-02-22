@@ -7,7 +7,7 @@ class Sessoes extends Controller{
     Usuario::validaUsuario();
   }
 
-  public function cadastro(){
-    $this->view('sessoes/cadastro');
+  public function nova(){
+    $this->view('sessoes/nova');
   }
 }
