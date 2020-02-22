@@ -5,6 +5,7 @@ class Sessoes extends Controller{
   public function __construct(){
     //só permite acessar qualquer uma dessas paginas se estiver logado
     Usuario::validaUsuario();
+    $this->mModel = $this->model('Sessao');
   }
 
   public function nova(){
@@ -13,11 +14,27 @@ class Sessoes extends Controller{
 
   public function cadastra(){
     $infos = $this->getDadosNovaSessao($_POST);
-    echo('<pre>');
-    print_r($infos);
-    echo('</pre>');
+    // echo('<pre>');
+    // print_r($infos);
+    // echo('</pre>');
+    //transforma a data em um formato aceito pelo mysql
+    $infos['data_atual'] = $this->formataData($infos['data_atual']);
+    $resposta = $this->mModel->cadastraSessao($infos);
+    if($resposta){
+      //deu bom
+      Mensageiro::registrarMensagemBoa('Sessão registrada');
+    }else{
+      Mensageiro::registraMensagemRuim('Não foi possível registrar a sessão. Tente novamente.');
+    }
 
-    echo($_POST['tipo_pag']);
+    header('Location: ' . URLROOT . '/sessoes/nova');
+  }
+
+  private function formataData($data0){
+    $temp = explode("/", $data0);
+    $nova_data = $temp[2] . '-' . $temp[1] . '-' . $temp[0];
+
+    return $nova_data;
   }
 
   private function getDadosNovaSessao($arrayInfo){

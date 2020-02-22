@@ -16,6 +16,7 @@ require_once 'helpers/Produtos.php';
 //carregando os models
 require_once 'models/Cliente.php';
 require_once 'models/Usuario.php';
+require_once 'models/Sessao.php';
 
 
 //autoloader para a libraries
