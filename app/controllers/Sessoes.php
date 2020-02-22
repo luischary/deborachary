@@ -12,6 +12,10 @@ class Sessoes extends Controller{
     $this->view('sessoes/nova');
   }
 
+  public function consulta(){
+    $this->view('sessoes/consulta');
+  }
+
   public function cadastra(){
     $infos = $this->getDadosNovaSessao($_POST);
     // echo('<pre>');
