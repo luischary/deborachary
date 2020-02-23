@@ -44,10 +44,11 @@ function clienteValido(cliente){
 }
 
 function atualizaValorPagar(){
-  var creditos = $("#inputValorCreditos").val();
-  var valorProduto = $("#inputValor").val();
+  let creditos = $("#inputValorCreditos").val();
+  let valorProduto = $("#inputValor").val();
+  let produtoCredito = $("#inputCreditoProduto").val();
 
-  if(creditos > 0){
+  if(creditos > 0 && produtoCredito == 1){
     //não paga nada
     $("#inputValorPagamento").val(0);
   }else{
@@ -103,9 +104,11 @@ function tipoBronzeHandler(){
     if(flagProduto == true){
       //coloca o valor do produto
       $("#inputValor").val(produto['valor']);
+      $("#inputCreditoProduto").val(produto['produto_credito']);
       atualizaValorPagar();
     }else{
       $("#inputValor").val(999999);
+      $("#inputCreditoProduto").val(produto['1']);
     }
   }
 }

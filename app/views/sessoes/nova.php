@@ -59,8 +59,16 @@
                   <input id='inputValor' type="number" name='valor_produto' class='form-control' readonly value='0'>
                 </div>
                 <div class="col-sm-12 col-md-6 my-2">
-                  <label for='inputValorComissao'>Comissão Clínica</label>
-                  <input id='inputValorComissao' type="number" name='comissao' class='form-control' readonly value='0'>
+                  <div class="row">
+                    <div class="col-6">
+                      <label for='inputValorComissao'>Comissão Clínica</label>
+                      <input id='inputValorComissao' type="number" name='comissao' class='form-control' readonly value='0'>
+                    </div>
+                    <div class="col-6">
+                      <label for='inputCreditoProduto'>Consome crédito</label>
+                      <input id='inputCreditoProduto' type='number' name='tipo_credito' class='form-control' readonly value='1'>
+                    </div>
+                  </div>
                 </div>
             </div>
 
