@@ -30,29 +30,28 @@
 </div>
 
 <div class='container mt-2 mb-4'>
-  <?php foreach($data as $cliente): ?>
+  <?php foreach($data as $sessao): ?>
     <div class='row my-2'>
       <div class='col-md-1 col-lg-2'>
       </div>
       <div class='col-md-10 col-lg-8'>
         <div class='card shadow'>
           <div class='card-body'>
-            <h5 class='card-title'><?php echo($cliente->nome . ' ' . $cliente->sobrenome);?></h5>
-            <p class='card-text'><?php echo $cliente->num_celular;?></p>
+            <h5 class='card-title'><?php echo($sessao->nome . ' ' . $sessao->sobrenome);?></h5>
+            <p class='card-text'><?php echo $sessao->clinica;?></p>
             <div class='row'>
               <div class='col-8'>
-                <p class='card-text'><?php echo $cliente->email;?></p>
+                <p class='card-text'><?php echo $sessao->tipo_bronze;?></p>
               </div>
               <div class='col-4 text-right'>
-                <p class='card-text'><?php echo $cliente->cidade;?></p>
+                <p class='card-text'><?php echo $sessao->data_atual;?></p>
               </div>
             </div>
             <div class='row mt-2'>
               <div class='col-6'>
                 <a href='<?php echo URLROOT;?>/clientes/detalhes/<?php echo $cliente->cpf;?>' class='card-link'>Detalhes</a>
               </div>
-              <div class='col-6 text-right'>
-                <a href='<?php echo URLROOT;?>/clientes/apagar/<?php echo $cliente->cpf;?>' class='btn btn-outline-danger btn-sm'>Apagar</a>
+              <div class='col-6'>
               </div>
             </div>
           </div>

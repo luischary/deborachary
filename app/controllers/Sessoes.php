@@ -13,7 +13,17 @@ class Sessoes extends Controller{
   }
 
   public function consulta(){
-    $this->view('sessoes/consulta');
+    $dadosConsultas = $this->mModel->pegaDadosConsultas();
+
+    if($dadosConsultas == false){
+      Mensageiro::registraMensagemRuim("Não foi possível carregar as informações das sessões registradas. Tente novamente.");
+    }else{
+      //precisa transformar a data para o formato brasileiro
+      for($i = 0; $i < sizeof($dadosConsultas); $i++){
+        $dadosConsultas[$i]->data_atual = $this->desconverteData($dadosConsultas[$i]->data_atual);
+      }
+    }
+    $this->view('sessoes/consulta', $dadosConsultas);
   }
 
   public function cadastra(){
@@ -31,7 +41,14 @@ class Sessoes extends Controller{
       Mensageiro::registraMensagemRuim('Não foi possível registrar a sessão. Tente novamente.');
     }
 
-    header('Location: ' . URLROOT . '/sessoes/nova');
+    header('Location: ' . URLROOT . '/sessoes/consulta');
+  }
+
+  private function desconverteData($data0){
+    $temp = explode('-', $data0);
+    $nova_data = $temp[2] . '/' . $temp[1] . '/' . $temp[0];
+
+    return $nova_data;
   }
 
   private function formataData($data0){

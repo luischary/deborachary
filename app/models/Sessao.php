@@ -9,6 +9,15 @@ class Sessao{
     $this->db = new Database();
   }
 
+  public function pegaDadosConsultas(){
+    $query = "SELECT t1.*, t2.nome, t2.sobrenome from sessoes as t1 left join clientes as t2 on (t1.cpf_cliente = t2.cpf)
+      ORDER BY t1.data_atual DESC, t1.hora_atual DESC";
+    $this->db->query($query);
+
+    $resposta = $this->db->resultSet();
+    return $resposta;
+  }
+
   public function cadastraSessao($info){
     $query = "INSERT INTO sessoes (cpf_cliente, tipo_bronze, clinica, data_atual, hora_atual, valor, forma_pag, parcelas_pagamento, obs_sessao, motivo, descr_outro, traje_festa, personalidade, marq_import, banho_quente, atividade_fisica, transpira, perfume_importado, gosta_sol, expos_sol, expectativa) VALUES (:cpf_cliente, :tipo_bronze, :clinica, :data_atual, :hora_atual, :valor, :forma_pag, :parcelas_pagamento, :obs_sessao, :motivo, :descr_outro, :traje_festa, :personalidade, :marq_import, :banho_quente, :atividade_fisica, :transpira, :perfume_importado, :gosta_sol, :expos_sol, :expectativa)";
     $this->db->query($query);
