@@ -9,6 +9,24 @@ class Sessao{
     $this->db = new Database();
   }
 
+  public function pegaSessoesMes($mes, $ano){
+    $query = "SELECT t1.*,
+              t2.nome,
+              t2.sobrenome,
+              t3.comissao
+              from sessoes as t1
+              left join clientes as t2 on(t1.cpf_cliente = t2.cpf)
+              left join clinicas as t3 on(t1.clinica = t3.nome)
+              where month(t1.data_atual)=:mes and year(t1.data_atual)=:ano";
+
+    $this->db->query($query);
+
+    $this->db->bind(':mes', $mes);
+    $this->db->bind(':ano', $ano);
+
+    return $this->db->resultSet();
+  }
+
   public function pegaDadosConsultas(){
     $query = "SELECT t1.*, t2.nome, t2.sobrenome from sessoes as t1 left join clientes as t2 on (t1.cpf_cliente = t2.cpf)
       ORDER BY t1.data_atual DESC, t1.hora_atual DESC";

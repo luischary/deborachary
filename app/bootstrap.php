@@ -12,6 +12,7 @@ require_once 'helpers/componentes.php';
 require_once 'helpers/mensagem.php';
 require_once 'helpers/Clinicas.php';
 require_once 'helpers/Produtos.php';
+require_once 'helpers/HelperFinanceiro.php';
 
 //carregando os models
 require_once 'models/Cliente.php';

@@ -45,7 +45,7 @@
                     </div>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link disabled" href="#">Financeiro</a>
+                      <a class="nav-link" href="<?php echo URLROOT;?>/financeiro/consulta">Financeiro</a>
                   </li>
               </ul>
               <?php if(Usuario::temUsuarioLogado() == false){ ?>
