@@ -27,7 +27,7 @@
 </div>
 
 <div class='painel-tabelas-financeiras'>
-  <div class='painel-tabela_financeira'>
+  <div class='painel-tabela-financeira'>
     <h3 class='nome-tabela-financeira'>Tabela de sessões</h3>
 
     <table class='table'>
@@ -35,7 +35,7 @@
     </table>
   </div>
 
-  <div class='painel-tabela_financeira'>
+  <div class='painel-tabela-financeira tabela-comissao'>
     <h3 class='nome-tabela-financeira'>Tabela de comissões</h3>
 
     <table class='table'>

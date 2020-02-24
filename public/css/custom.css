@@ -15,6 +15,7 @@ body,
 html,
 section {
     height: 100%;
+    width: 100%;
     background-color: var(--color-background);
     font-family: 'Lato', sans-serif;
 }
@@ -25,7 +26,7 @@ body{
 
 @media(max-width: 700px){
   body{
-    padding-top: 5%;
+    padding: 5% 0 0 0;
   }
 }
 
@@ -195,4 +196,115 @@ nav .dropdown-menu .dropdown-item {
 
 .titulo-pergunta{
   font-size: 1.2rem;
+}
+
+/*  ------------------------------------------ FINANCEIRO ----------------------------------------- */
+.painel-tabelas-financeiras{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.painel-tabela-financeira{
+  width: 900px;
+  margin: 1rem auto;
+  margin-top: 3rem;
+  overflow: hidden;
+}
+
+.painel-tabela-financeira table{
+  background-color: #FFFFFF;
+  font-weight: 200;
+  color: var(--color-secondary);
+}
+
+.nome-tabela-financeira{
+  color: var(--color-secondary);
+  margin: 1rem 0 2rem 0;
+  font-size: 2rem;
+}
+
+.cabecalho-tabela, .linha-total-tabela{
+  color: var(--color-secondary-dark);
+  background-color: var(--color-secondary-light);
+}
+
+.tabela-comissao{
+  width: 400px;
+}
+
+@media(max-width: 950px){
+  .painel-tabela-financeira{
+    width: 750px;
+  }
+
+  .painel-tabela-financeira table th{
+    font-size: 0.8rem;
+  }
+}
+
+@media(max-width: 800px){
+  .painel-tabela-financeira{
+    width: 600px;
+  }
+
+  .painel-tabela-financeira table th{
+    font-size: 0.7rem;
+  }
+
+  .tabela-comissao{
+    width: 300px;
+  }
+}
+
+@media(max-width: 640px){
+  .painel-tabela-financeira{
+    width: 500px;
+  }
+
+  .painel-tabela-financeira table th{
+    font-size: 0.6rem;
+  }
+
+  .remove-pequeno{
+    display: none;
+  }
+}
+
+@media(max-width: 500px){
+  .painel-tabela-financeira{
+    width: 400px;
+  }
+
+  .painel-tabela-financeira table{
+    font-size: 0.7rem;
+  }
+
+  .painel-tabela-financeira table td, .painel-tabela-financeira table th{
+    padding: 0.6rem 0.2rem;
+  }
+
+  .cabecalho-tabela, .linha-total-tabela{
+    font-size: 0.7rem;
+  }
+}
+
+@media(max-width: 400px){
+  .painel-tabela-financeira{
+    width: 370px;
+  }
+
+  .painel-tabela-financeira table{
+    font-size: 0.6rem;
+  }
+
+  .painel-tabela-financeira table td, .painel-tabela-financeira table th{
+    padding: 0.6rem 0.2rem;
+  }
+
+  .cabecalho-tabela, .linha-total-tabela{
+    font-size: 0.6rem;
+  }
 }

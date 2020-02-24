@@ -1,5 +1,15 @@
 <?php
 
+function reduz_ajusta_data($sessoes){
+    for($i = 0; $i < sizeof($sessoes); $i++){
+      $temp_data = explode('-', $sessoes[$i]->data_atual);
+      $novaData = $temp_data[2] . '/' . $temp_data[1];
+
+      $sessoes[$i]->data_atual = $novaData;
+    }
+    return $sessoes;
+}
+
 
 function geraLinhasTabelaComissoes($sessoes){
   $camposCabecalho = [
@@ -37,6 +47,8 @@ function geraLinhasTabelaComissoes($sessoes){
 
 //nome_cliente bronze clinica data forma pagto valor_comissao valor_debora
 function geraLinhasTabelaSessoes($sessoes){
+  $sessoes = reduz_ajusta_data($sessoes);
+
   $camposCabecalho = [
     "Cliente",
     "Produto",
@@ -46,9 +58,11 @@ function geraLinhasTabelaSessoes($sessoes){
     "Comissao",
     "Valor_Debora"
   ];
+  $removePequeno = [];
+  $removePequeno['Forma_Pagto'] = true;
 
   //comeca gerando os cabecalhos
-  $cabecalho = montaCabecalhoTabela($camposCabecalho);
+  $cabecalho = montaCabecalhoTabela($camposCabecalho, $removePequeno);
 
   //para guardar os totais dos valores
   $total_valorDebora = 0;
@@ -62,7 +76,7 @@ function geraLinhasTabelaSessoes($sessoes){
     $bronze = "<th>" . $sessao->tipo_bronze . "</th>";
     $clinica = "<th>" . $sessao->clinica . "</th>";
     $data = "<th>" . strval($sessao->data_atual) . "</th>";
-    $formaPagto = "<th>" . $sessao->forma_pag . "</th>";
+    $formaPagto = "<th class='remove-pequeno'>" . $sessao->forma_pag . "</th>";
     $valorComissao = "<th>" . number_format($sessao->comissao * $sessao->valor, 2, ',', '.') . "</th>";
     $valorDebora = "<th>" . number_format($sessao->valor*(1-$sessao->comissao), 2, ',', '.') . "</th>";
 
@@ -74,23 +88,28 @@ function geraLinhasTabelaSessoes($sessoes){
   }
 
   //linha de total
-  $totalNome = "<td class='linha-total-tabela'>Total</td>";
+  $totalNome = "<td>Total</td>";
   $totalEmBranco = "<td></td>";
+  $totalEmBrancoSomePequeno = "<td class='remove-pequeno'></td>";
   $linhaTotalComissao = "<td>" . number_format($total_valorComissao, 2, ',', '.') . "</td>";
   $linhgaTotalDebora = "<td>" . number_format($total_valorDebora, 2, ',', '.') . "</td>";
 
-  $linhaTotal = "<tr>" . $totalNome . $totalEmBranco . $totalEmBranco . $totalEmBranco . $totalEmBranco . $linhaTotalComissao . $linhgaTotalDebora . "</tr>";
+  $linhaTotal = "<tr class='linha-total-tabela'>" . $totalNome . $totalEmBranco . $totalEmBranco . $totalEmBranco . $totalEmBrancoSomePequeno . $linhaTotalComissao . $linhgaTotalDebora . "</tr>";
 
   $conteudoTabela = $cabecalho . $linhas . $linhaTotal;
   return $conteudoTabela;
 }
 
-function montaCabecalhoTabela($camposCabecalho){
+function montaCabecalhoTabela($camposCabecalho, $removePequeno=[]){
   $cabecalho = "<tr class='cabecalho-tabela'>";
   $linhas = '';
 
   foreach ($camposCabecalho as $campo) {
-    $cabecalho = $cabecalho . "<th>" . $campo . "</th>";
+    if(isset($removePequeno[$campo])){
+      $cabecalho = $cabecalho . "<th class='remove-pequeno'>" . $campo . "</th>";
+    }else{
+      $cabecalho = $cabecalho . "<th>" . $campo . "</th>";
+    }
   }
 
   $cabecalho = $cabecalho . "</tr>";
