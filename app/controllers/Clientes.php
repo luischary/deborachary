@@ -9,6 +9,26 @@
       Usuario::validaUsuario();
     }
 
+    //cpf do cliente, nome do produto, booleano falando se o cara pagou (true) ou gastou os creditos (false)
+    public function comprouProduto($cpfCliente, $produto){
+      $dbProduto = new Produtos();
+      $infoCreditoProduto = $dbProduto->produtoGastaCredito($produto);
+      if($infoCreditoProduto->produto_credito == 1){ //gasta credito do cliente se o produto envolver o modelo de crédito
+        $creditosAtuais = $this->mModel->getCreditos($cpfCliente);
+        $creditosGastos = $infoCreditoProduto->creditos_debita;
+        $creditosRecebidos = ($creditosAtuais > 0 ? 0 : $infoCreditoProduto->creditos_credita); //se ja tiver creditos significa que utilizou eles para pagar
+        $saldo_creditos_final = $creditosAtuais - $creditosGastos + $creditosRecebidos;
+
+        if($saldo_creditos_final != $creditosAtuais){
+          $resultado = $this->mModel->atualizaSaldoCreditos($cpfCliente, $saldo_creditos_final);
+          if($resultado == false){
+            Mensageiro::registraMensagemRuim('Não foi possível atualizar saldo de créditos do cliente. ERRO GRAVE');
+          }
+        }
+      }
+      header('Location: ' . URLROOT . '/sessoes/consulta');
+    }
+
     //deleta o cliente do banco de dados
     public function apagar($cpf){
       $resposta = $this->mModel->deletaClientePorCpf($cpf);

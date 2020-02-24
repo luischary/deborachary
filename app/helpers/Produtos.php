@@ -26,4 +26,13 @@ class Produtos{
 
     return $this->db->single();
   }
+
+  public function produtoGastaCredito($produto){
+    $query = "SELECT produto_credito, creditos_credita, creditos_debita from produtos where replace(nome, ' ', '')=:nome";
+    $this->db->query($query);
+
+    $this->db->bind(':nome', $produto);
+
+    return $this->db->single();
+  }
 }

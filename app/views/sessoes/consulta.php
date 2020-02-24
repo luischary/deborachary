@@ -49,7 +49,7 @@
             </div>
             <div class='row mt-2'>
               <div class='col-6'>
-                <a href='<?php echo URLROOT;?>/clientes/detalhes/<?php echo $cliente->cpf;?>' class='card-link'>Detalhes</a>
+                <a href='<?php echo URLROOT;?>/clientes/detalhes/<?php echo $sessao->cpf_cliente;?>' class='card-link'>Detalhes</a>
               </div>
               <div class='col-6'>
               </div>

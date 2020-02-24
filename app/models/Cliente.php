@@ -9,6 +9,38 @@
       $this->db = new Database();
     }
 
+    public function atualizaSaldoCreditos($cpf, $saldoNovo){
+      $query = "UPDATE clientes set creditos=:creditos WHERE cpf=:cpf";
+      $this->db->query($query);
+
+      $this->db->bind(':creditos', $saldoNovo);
+      $this->db->bind(':cpf', $cpf);
+
+      return $this->db->execute();
+    }
+
+    public function gastaCredito($cpfCliente){
+      $query = "UPDATE clientes SET creditos=creditos-1 where cpf=:cpf";
+      $this->db->query($query);
+
+      $this->db->bind(':cpf', $cpfCliente);
+
+      return $this->db->execute();
+    }
+
+    public function getCreditos($cpf){
+      $query = "SELECT creditos from clientes where cpf=:cpf";
+      $this->db->query($query);
+
+      $this->db->bind(':cpf', $cpf);
+      $resposta = $this->db->single();
+      if($resposta != false){
+        return $resposta->creditos;
+      }else{
+        return -99;
+      }
+    }
+
     //pesquisa se ja existe o cpf cadastrado
     public function cpfCadastrado($cpf){
       $query = "SELECT * FROM clientes WHERE cpf=:cpf";

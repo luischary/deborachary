@@ -37,11 +37,12 @@ class Sessoes extends Controller{
     if($resposta){
       //deu bom
       Mensageiro::registrarMensagemBoa('Sessão registrada');
+      //mada o cara para fazer a regra de desconto do credito do cliente caso o produto se aplique e o cliente tenha credito
+      header('Location: ' . URLROOT . '/clientes/comprouProduto/' . $infos['cpf'] . '/' . $infos['produto']);
     }else{
       Mensageiro::registraMensagemRuim('Não foi possível registrar a sessão. Tente novamente.');
+      header('Location: ' . URLROOT . '/sessoes/nova');
     }
-
-    header('Location: ' . URLROOT . '/sessoes/consulta');
   }
 
   private function desconverteData($data0){
@@ -90,7 +91,11 @@ class Sessoes extends Controller{
 
     $resposta = array();
     foreach ($campos as $campoFormulario) {
-      $resposta[$campoFormulario] = $arrayInfo[$campoFormulario];
+      if(!isset($arrayInfo[$campoFormulario])){
+        $resposta[$campoFormulario] = '';
+      }else{
+        $resposta[$campoFormulario] = $arrayInfo[$campoFormulario];
+      }
     }
 
     return $resposta;
