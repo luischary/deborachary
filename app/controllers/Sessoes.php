@@ -13,7 +13,26 @@ class Sessoes extends Controller{
   }
 
   public function consulta(){
-    $dadosConsultas = $this->mModel->pegaDadosConsultas();
+    $dadosConsultas = [];
+
+    if(isset($_POST['tipo_pesquisa'])){ //veio de uma pesquisa
+      $infoPesquisa = $_POST['texto_pesquisa'];
+
+      switch($_POST['tipo_pesquisa']){
+        case 'Cliente':
+          $dadosConsultas = $this->mModel->pegaSessoesCliente($infoPesquisa);
+          break;
+        case 'Data':
+          //quebra em mes e ano
+          $quebrado = explode('/', $infoPesquisa);
+          $dadosConsultas = $this->mModel->pegaSessoesMes($quebrado[0], $quebrado[1]);
+          break;
+        case 'Clinica':
+          $dadosConsultas = $this->mModel->pegaSessoesClinica($infoPesquisa);
+      }
+    }else{
+      $dadosConsultas = $this->mModel->pegaDadosConsultas();
+    }
 
     if($dadosConsultas == false){
       Mensageiro::registraMensagemRuim("Não foi possível carregar as informações das sessões registradas. Tente novamente.");

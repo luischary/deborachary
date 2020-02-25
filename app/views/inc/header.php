@@ -7,6 +7,7 @@
     <link rel='stylesheet' type='text/css' href='<?php echo URLROOT; ?>/css/bootstrap.min.css'>
     <link rel='stylesheet' type='text/css' href='<?php echo URLROOT; ?>/css/custom.css'>
     <script src="https://kit.fontawesome.com/e7ab9db2ce.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="<?php echo URLROOT;?>/js/jquery-3.4.1.min.js"></script>
     <title><?php echo SITENAME; ?></title>
 </head>
 <body>

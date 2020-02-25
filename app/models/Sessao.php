@@ -9,6 +9,29 @@ class Sessao{
     $this->db = new Database();
   }
 
+  public function pegaSessoesClinica($clinica){
+    $query = "SELECT t1.*, t2.nome, t2.sobrenome from sessoes as t1 left join clientes as t2 on (t1.cpf_cliente = t2.cpf) where lower(t1.clinica) like :clinica";
+    $this->db->query($query);
+
+    //coloca o caractere de busca;
+    $clinica = '%' . $clinica . '%';
+    $this->db->bind(':clinica', $clinica);
+
+    return $this->db->resultSet();
+  }
+
+  public function pegaSessoesCliente($cliente){
+      $query = "SELECT t1.nome, t1.sobrenome, t2.* from clientes as t1 left join sessoes as t2 on (t1.cpf = t2.cpf_cliente) where (lower(t1.nome) like :cliente or lower(t1.sobrenome) like :cliente2)";
+      $this->db->query($query);
+
+      //coloca o caractere de busca;
+      $cliente = '%' . $cliente . '%';
+      $this->db->bind(':cliente', $cliente);
+      $this->db->bind(':cliente2', $cliente);
+
+      return $this->db->resultSet();
+  }
+
   public function getMesesSessoes(){
     $query = "SELECT distinct month(data_atual) as mes, year(data_atual) as ano from sessoes";
     $this->db->query($query);
