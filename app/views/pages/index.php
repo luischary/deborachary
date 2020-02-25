@@ -43,7 +43,7 @@
         <div class='col-md-4 my-2'>
           <div class='card text-center pt-2 shadow'>
             <i class='fas fa-coins fa-5x mb-5'></i>
-            <a class='btn btn-secondary' href="#">
+            <a class='btn btn-secondary' href="<?php echo URLROOT;?>/financeiro/consulta">
               <h3>Financeiro</h3>
             </a>
           </div>
