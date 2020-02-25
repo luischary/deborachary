@@ -9,17 +9,15 @@ class Financeiro extends Controller{
   }
 
   //consulta geral
-  public function consulta($mesConsulta = null, $anoConsulta = null){
+  public function consulta(){
     $sessoes = array();
     $mes = intval(date('m'));
     $ano = intval(date('yy'));
 
-    if(!is_null($mesConsulta)){ //mostra de forma geral o mes atual
-      $mes = $mesConsulta;
-    }
-
-    if(!is_null($anoConsulta)){
-      $ano = $anoConsulta;
+    if(isset($_POST['mes-consulta-financeiro'])){
+      $infoMes = explode('/', $_POST['mes-consulta-financeiro']);
+      $mes = $infoMes[0];
+      $ano = $infoMes[1];
     }
 
     $sessoes = $this->mModel->pegaSessoesMes($mes, $ano);
@@ -27,6 +25,12 @@ class Financeiro extends Controller{
       Mensageiro::registraMensagemRuim("Não foi possível obter os dados financeiros. Erro!");
       header('Location: ' . URLROOT);
     }
-    $this->view('financeiro/consulta', $sessoes);
+
+    $infos = [];
+    $infos['sessoes'] = $sessoes;
+    $infos['mesesFinanceiro'] = $this->mModel->getMesesSessoes();
+    $infos['mesAtual'] = $mes;
+    $infos['anoAtual'] = $ano;
+    $this->view('financeiro/consulta', $infos);
   }
 }

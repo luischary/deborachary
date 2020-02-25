@@ -1,5 +1,19 @@
 <?php
 
+function geraOptionsMesesFinanceiro($meses, $mesAtual, $anoAtual){
+
+  $opcoes = '';
+  foreach($meses as $infoMes){
+    if($mesAtual == $infoMes->mes && $anoAtual == $infoMes->ano){
+      $opcoes = $opcoes . "<option selected value='" . strval($infoMes->mes) . "/" . strval($infoMes->ano) . "'>" . strval($infoMes->mes) . "/" . strval($infoMes->ano) . "</option>";
+    }else{
+      $opcoes = $opcoes . "<option value='" . strval($infoMes->mes) . "/" . strval($infoMes->ano) . "'>" . strval($infoMes->mes) . "/" . strval($infoMes->ano) . "</option>";
+    }
+  }
+
+  return $opcoes;
+}
+
 function reduz_ajusta_data($sessoes){
     for($i = 0; $i < sizeof($sessoes); $i++){
       $temp_data = explode('-', $sessoes[$i]->data_atual);

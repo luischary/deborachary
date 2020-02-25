@@ -7,6 +7,17 @@ class Api extends Controller{
 
   }
 
+  public function getMesesFinanceiro(){
+    $db = $this->model('Sessao');
+    $meses = $db->getMesesSessoes();
+
+    if($meses == false){
+      echo json_encode(array());
+    }else{
+      echo json_encode($meses);
+    }
+  }
+
   public function clinica($nome){
     $db = new Clinicas();
     $clinica = $db->getClinica($nome);

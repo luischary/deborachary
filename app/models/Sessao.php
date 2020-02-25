@@ -9,6 +9,12 @@ class Sessao{
     $this->db = new Database();
   }
 
+  public function getMesesSessoes(){
+    $query = "SELECT distinct month(data_atual) as mes, year(data_atual) as ano from sessoes";
+    $this->db->query($query);
+    return $this->db->resultSet();
+  }
+
   public function pegaSessoesMes($mes, $ano){
     $query = "SELECT t1.*,
               t2.nome,
