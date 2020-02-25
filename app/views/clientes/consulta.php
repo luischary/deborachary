@@ -31,7 +31,14 @@
       <div class='col-md-10 col-lg-8'>
         <div class='card shadow'>
           <div class='card-body'>
-            <h5 class='card-title'><?php echo($cliente->nome . ' ' . $cliente->sobrenome);?></h5>
+            <div class='row'>
+              <div class='col-9'>
+                <h5 class='card-title'><?php echo($cliente->nome . ' ' . $cliente->sobrenome);?></h5>
+              </div>
+              <div class='col-3 text-right'>
+                <h5>C: <?php echo($cliente->creditos);?></h5>
+              </div>
+            </div>
             <p class='card-text'><?php echo $cliente->num_celular;?></p>
             <div class='row'>
               <div class='col-8'>
