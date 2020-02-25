@@ -4,6 +4,7 @@
 class Financeiro extends Controller{
 
   public function __construct(){
+    Usuario::validaUsuario();
     $this->mModel = $this->model('Sessao');
   }
 
